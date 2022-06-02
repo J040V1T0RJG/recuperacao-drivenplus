@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useContext } from "react";
 
 import UserContext from "./UserContext";
 
 function Login () {
+    const navigate = useNavigate();
     const [dataLogin, setDataLogin] = useState({email: "", password: ""})
     const { setLoginDataReceived } = useContext(UserContext)
-
 
     function sendLogin (e) {
         e.preventDefault();
@@ -20,46 +20,46 @@ function Login () {
         });
         promise.then(response => {
             setLoginDataReceived(response)
-            console.log("entrei")
-            console.log("response", response)
+
+            if (response.data.membership == null) {
+                navigate("/subscriptions")
+            }
+            else {
+                navigate("/home")
+            }
         });
         promise.catch(err => {
             alert(`${err.response.data.message}`)
         });
-
-    }
-
-
-
-
+    };
 
     return (
         <>
-        <LoginStyles>
-            <img src="img/Driven_white 1.svg" alt="logomarca" />
-            <LoginFormStyles onSubmit={sendLogin}>
-                <input 
-                    type="email" 
-                    placeholder="E-mail"
-                    value={dataLogin.email}
-                    required
-                    onChange={e => setDataLogin({...dataLogin, email: e.target.value})}
+            <LoginStyles>
+                <img src="img/Driven_white 1.svg" alt="logomarca" />
+                <LoginFormStyles onSubmit={sendLogin}>
+                    <input 
+                        type="email" 
+                        placeholder="E-mail"
+                        value={dataLogin.email}
+                        required
+                        onChange={e => setDataLogin({...dataLogin, email: e.target.value})}
 
-                />
-                <input 
-                    type="password" 
-                    placeholder="Senha"
-                    value={dataLogin.password}
-                    required
-                    onChange={e => setDataLogin({...dataLogin, password: e.target.value})}
+                    />
+                    <input 
+                        type="password" 
+                        placeholder="Senha"
+                        value={dataLogin.password}
+                        required
+                        onChange={e => setDataLogin({...dataLogin, password: e.target.value})}
 
-                />
-                <button type="submit"><p>ENTRAR</p></button>
-            </LoginFormStyles>
-            <LinkStyles to={"/sign-up"}>
-                <div className="dontHaveAccount"><p>Não possuí uma conta? Cadastre-se</p></div>
-            </LinkStyles>
-        </LoginStyles>
+                    />
+                    <button type="submit"><p>ENTRAR</p></button>
+                </LoginFormStyles>
+                <LinkStyles to={"/sign-up"}>
+                    <div className="dontHaveAccount"><p>Não possuí uma conta? Cadastre-se</p></div>
+                </LinkStyles>
+            </LoginStyles>
         </>
     )
 };

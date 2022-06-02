@@ -3,11 +3,13 @@ import { useState } from "react";
 
 import Login from "./Login";
 import Sign_up from "./Sign-up";
+import Subscriptions from "./Subscriptions";
+import Home from "./Home";
 import UserContext from "./UserContext";
 
 function App () {
     const  [loginDataReceived, setLoginDataReceived] = useState();
-    
+
 
 
     return (
@@ -20,9 +22,9 @@ function App () {
                 <Routes>
                     <Route path="/" element={<Login />}/>
                     <Route path="/sign-up" element={<Sign_up />}/>
-                    <Route path="/subscriptions" />
+                    <Route path="/subscriptions" element={<Subscriptions />}/>
                     <Route path="/subscriptions/ID_DO_PLANO" />
-                    <Route path="/home" />
+                    <Route path="/home" element={<Home />}/>
                 </Routes>
             </UserContext.Provider>
         </BrowserRouter>
