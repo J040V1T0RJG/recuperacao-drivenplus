@@ -5,6 +5,7 @@ import Login from "./Login";
 import Sign_up from "./Sign-up";
 import Subscriptions from "./Subscriptions";
 import Home from "./Home";
+import SubscriptionId from "./SubscriptionId";
 import UserContext from "./UserContext";
 
 function App () {
@@ -23,7 +24,7 @@ function App () {
                     <Route path="/" element={<Login />}/>
                     <Route path="/sign-up" element={<Sign_up />}/>
                     <Route path="/subscriptions" element={<Subscriptions />}/>
-                    <Route path="/subscriptions/ID_DO_PLANO" />
+                     <Route path="/subscriptions/:idSubscription" element={<SubscriptionId />}/> 
                     <Route path="/home" element={<Home />}/>
                 </Routes>
             </UserContext.Provider>

@@ -19,17 +19,17 @@ function Login () {
             password: dataLogin.password
         });
         promise.then(response => {
-            setLoginDataReceived(response)
+            setLoginDataReceived(response);
 
             if (response.data.membership == null) {
-                navigate("/subscriptions")
+                navigate("/subscriptions");
             }
             else {
-                navigate("/home")
+                navigate("/home");
             }
         });
         promise.catch(err => {
-            alert(`${err.response.data.message}`)
+            alert(`${err.response.data.message}`);
         });
     };
 
