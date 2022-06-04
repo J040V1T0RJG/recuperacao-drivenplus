@@ -24,7 +24,7 @@ function App () {
                     <Route path="/" element={<Login />}/>
                     <Route path="/sign-up" element={<Sign_up />}/>
                     <Route path="/subscriptions" element={<Subscriptions />}/>
-                     <Route path="/subscriptions/:idSubscription" element={<SubscriptionId />}/> 
+                    <Route path="/subscriptions/:idSubscription" element={<SubscriptionId />}/> 
                     <Route path="/home" element={<Home />}/>
                 </Routes>
             </UserContext.Provider>
