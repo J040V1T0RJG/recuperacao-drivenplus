@@ -44,7 +44,6 @@ function Login () {
                         value={dataLogin.email}
                         required
                         onChange={e => setDataLogin({...dataLogin, email: e.target.value})}
-
                     />
                     <input 
                         type="password" 
@@ -52,7 +51,6 @@ function Login () {
                         value={dataLogin.password}
                         required
                         onChange={e => setDataLogin({...dataLogin, password: e.target.value})}
-
                     />
                     <button type="submit"><p>ENTRAR</p></button>
                 </LoginFormStyles>

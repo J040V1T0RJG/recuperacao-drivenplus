@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import axios from "axios";
 
 import UserContext from "./UserContext";
 
@@ -8,7 +9,26 @@ function User () {
 
     const navigate = useNavigate();
     const params = useParams();
-    const { loginDataReceived } = useContext(UserContext);
+    const { loginDataReceived, setLoginDataReceived } = useContext(UserContext);
+
+
+
+
+    const URL = "https://mock-api.driven.com.br/api/v4/driven-plus/auth/login";
+    useEffect(() => {
+        const promise = axios.post(URL,{
+            email: loginDataReceived.data.email,
+            password: loginDataReceived.data.password
+        });
+        promise.then(response => {
+            setLoginDataReceived(response);
+        });
+    },[]);
+
+
+
+
+
 
     function comeBack () {
         navigate(-1);

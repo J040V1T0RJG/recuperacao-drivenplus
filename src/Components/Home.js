@@ -33,11 +33,10 @@ function Home () {
         const URLdelete = "https://mock-api.driven.com.br/api/v4/driven-plus/subscriptions"
         const promise = axios.delete(URLdelete, config)
         promise.then(response => {
-            console.log("response delete", response)
             navigate("/subscriptions")
         });
         promise.catch(err => {
-            console.log("err delete", err)
+            alert(`${err.response.data.message}`);
         });
     };
 
