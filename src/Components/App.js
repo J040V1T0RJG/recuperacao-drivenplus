@@ -6,6 +6,8 @@ import Sign_up from "./Sign-up";
 import Subscriptions from "./Subscriptions";
 import Home from "./Home";
 import SubscriptionId from "./SubscriptionId";
+import User from "./User";
+import UserUpdate from "./UserUpdate";
 import UserContext from "./UserContext";
 
 function App () {
@@ -26,6 +28,8 @@ function App () {
                     <Route path="/subscriptions" element={<Subscriptions />}/>
                     <Route path="/subscriptions/:idSubscription" element={<SubscriptionId />}/> 
                     <Route path="/home" element={<Home />}/>
+                    <Route path="/users/:idUser" element={<User />}/>
+                    <Route path="/users/:idUser/update" element={<UserUpdate />}/>
                 </Routes>
             </UserContext.Provider>
         </BrowserRouter>

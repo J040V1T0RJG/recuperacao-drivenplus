@@ -41,6 +41,10 @@ function Home () {
         });
     };
 
+    function goToUser () {
+        navigate(`/users/${loginDataReceived.data.id}`)
+    }
+
     function RenderPerks (props) {
         const { title, link } = props
         return (
@@ -56,7 +60,7 @@ function Home () {
         <>
             <HomeStyles>
                 <img src={`${loginDataReceived.data.membership !== null && loginDataReceived.data.membership.image}`} alt="" />
-                <ion-icon name="person-circle"></ion-icon>
+                <ion-icon name="person-circle" onClick={() => goToUser()}></ion-icon>
                 <p>Olá, {loginDataReceived.data.membership !== null && loginDataReceived.data.name}</p>
                 
                 {loginDataReceived.data.membership !== null && loginDataReceived !== undefined && loginDataReceived.data.membership.perks.map((perk, index) => (
